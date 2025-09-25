@@ -11,8 +11,9 @@ public class AgeofSiegeDataMapProvider extends DataMapProvider {
 		super(packOutput, lookupProvider);
 	}
 
-	@Override
-	protected void gather() {
+	// is apparently deprecated?
+	//@Override
+	//protected void gather() {
 		// neoforged datamaps here
-	}
+	//}
 }
