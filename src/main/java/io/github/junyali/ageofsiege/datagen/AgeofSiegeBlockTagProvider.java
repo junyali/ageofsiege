@@ -1,8 +1,10 @@
 package io.github.junyali.ageofsiege.datagen;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
+import io.github.junyali.ageofsiege.block.AgeofSiegeBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -18,5 +20,7 @@ public class AgeofSiegeBlockTagProvider extends BlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.@NotNull Provider provider) {
 		// tags go here!
+		tag(BlockTags.MINEABLE_WITH_SHOVEL)
+				.add(AgeofSiegeBlocks.SALT_BLOCK.get());
 	}
 }

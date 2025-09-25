@@ -5,6 +5,8 @@ import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -13,6 +15,11 @@ import java.util.function.Supplier;
 
 public class AgeofSiegeBlocks {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AgeofSiege.MODID);
+
+	// salt bae approves :p
+	public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
+			() -> new Block(BlockBehaviour.Properties.of()
+					.strength(0.5f).sound(SoundType.SAND)));
 
 	// helper functions for registering blocks and item counterparts
 	private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

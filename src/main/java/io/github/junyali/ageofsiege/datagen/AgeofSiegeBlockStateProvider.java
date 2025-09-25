@@ -1,6 +1,7 @@
 package io.github.junyali.ageofsiege.datagen;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
+import io.github.junyali.ageofsiege.block.AgeofSiegeBlocks;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -14,6 +15,7 @@ public class AgeofSiegeBlockStateProvider extends BlockStateProvider {
 	@Override
 	protected void registerStatesAndModels() {
 		// register blockstates hereeee
+		blockWithItem(AgeofSiegeBlocks.SALT_BLOCK);
 	}
 
 	private void blockWithItem(DeferredBlock<?> deferredBlock) {

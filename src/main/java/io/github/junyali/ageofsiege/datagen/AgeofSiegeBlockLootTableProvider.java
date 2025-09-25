@@ -18,6 +18,7 @@ public class AgeofSiegeBlockLootTableProvider extends BlockLootSubProvider {
 	@Override
 	protected void generate() {
 		// breaking block drops stuff idk
+		dropSelf(AgeofSiegeBlocks.SALT_BLOCK.get());
 	}
 
 	@Override

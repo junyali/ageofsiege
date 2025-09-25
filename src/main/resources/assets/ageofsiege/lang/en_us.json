@@ -1,6 +1,9 @@
 {
+  "item.ageofsiege.salt": "Salt",
   "item.ageofsiege.hardtack_bread": "Hardtack Bread",
   "item.ageofsiege.black_bread": "Black Bread",
+
+  "block.ageofsiege.salt_block": "Salt Block",
 
   "item.minecraft.potion.effect.mead_potion": "Mead",
 

@@ -15,6 +15,9 @@ import java.util.List;
 public class AgeofSiegeItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AgeofSiege.MODID);
 
+	public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+			() -> new Item(new Item.Properties()));
+
 	public static final DeferredItem<Item> HARDTACK_BREAD = ITEMS.register("hardtack_bread",
 			() -> new Item(new Item.Properties().food(AgeofSiegeFoodProperties.HARDTACK_BREAD)) {
 				@Override
