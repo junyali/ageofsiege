@@ -2,6 +2,7 @@ package io.github.junyali.ageofsiege;
 
 import io.github.junyali.ageofsiege.block.AgeofSiegeBlocks;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
+import io.github.junyali.ageofsiege.potion.AgeofSiegePotions;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -27,6 +28,7 @@ public class AgeofSiege {
 
 		AgeofSiegeItems.register(modEventBus);
 		AgeofSiegeBlocks.register(modEventBus);
+		AgeofSiegePotions.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
