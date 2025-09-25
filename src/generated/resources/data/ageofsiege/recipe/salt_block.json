@@ -1,15 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "#": {
+  "ingredients": [
+    {
+      "item": "ageofsiege:salt"
+    },
+    {
+      "item": "ageofsiege:salt"
+    },
+    {
+      "item": "ageofsiege:salt"
+    },
+    {
       "item": "ageofsiege:salt"
     }
-  },
-  "pattern": [
-    "###",
-    "###",
-    "###"
   ],
   "result": {
     "count": 1,

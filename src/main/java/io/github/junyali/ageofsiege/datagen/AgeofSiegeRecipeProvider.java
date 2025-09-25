@@ -19,13 +19,6 @@ public class AgeofSiegeRecipeProvider extends RecipeProvider implements IConditi
 	@Override
 	protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
 		// crafting / smelting recipes go here
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AgeofSiegeBlocks.SALT_BLOCK.get(), 1)
-				.pattern("###")
-				.pattern("###")
-				.pattern("###")
-				.define('#', AgeofSiegeItems.SALT.get())
-				.unlockedBy("has_salt", has(AgeofSiegeItems.SALT)).save(recipeOutput);
-
 		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, AgeofSiegeItems.HARDTACK_BREAD.get(), 3)
 				.pattern(" @ ")
 				.pattern("###")
@@ -42,9 +35,9 @@ public class AgeofSiegeRecipeProvider extends RecipeProvider implements IConditi
 				.define('@', Items.CHARCOAL)
 				.unlockedBy("has_wheat", has(Items.WHEAT)).save(recipeOutput);
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AgeofSiegeItems.SALT.get(), 9)
-				.requires(AgeofSiegeBlocks.SALT_BLOCK, 1)
-				.unlockedBy("has_salt_block", has(AgeofSiegeBlocks.SALT_BLOCK)).save(recipeOutput);
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AgeofSiegeBlocks.SALT_BLOCK.get(), 1)
+				.requires(AgeofSiegeItems.SALT, 4)
+				.unlockedBy("has_salt", has(AgeofSiegeItems.SALT)).save(recipeOutput);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AgeofSiegeItems.SALTED_MEAT.get(), 1)
 				.requires(AgeofSiegeItems.SALT, 1)
