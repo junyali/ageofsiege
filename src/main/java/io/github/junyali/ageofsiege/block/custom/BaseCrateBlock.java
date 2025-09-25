@@ -1,12 +1,16 @@
 package io.github.junyali.ageofsiege.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import io.github.junyali.ageofsiege.block.entity.BaseCrateBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -40,17 +44,5 @@ public abstract class BaseCrateBlock extends BaseEntityBlock {
 			player.openMenu((MenuProvider) crateEntity);
 		}
 		return InteractionResult.SUCCESS;
-	}
-
-	@Override
-	public void onRemove(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull BlockState newBlockState, boolean isMoving) {
-		if (!blockState.is(newBlockState.getBlock())) {
-			BlockEntity blockEntity = level.getBlockEntity(blockPos);
-			if (blockEntity instanceof BaseCrateBlockEntity crateEntity) {
-				Containers.dropContents(level, blockPos, (Container) crateEntity);
-				level.updateNeighbourForOutputSignal(blockPos, this);
-			}
-		}
-		super.onRemove(blockState, level, blockPos, newBlockState, isMoving);
 	}
 }
