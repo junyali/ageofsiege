@@ -22,6 +22,9 @@ public class AgeofSiegeItemTagProvider extends ItemTagsProvider {
 	public static final TagKey<Item> SALT_BLOCK = commonTag("storage_blocks/salt");
 	public static final TagKey<Item> SALT = commonTag("dusts/salt");
 
+	public static final TagKey<Item> BREAD = commonTag("foods/bread");
+	public static final TagKey<Item> RAW_MEAT = commonTag("foods/raw_meat");
+
 	public AgeofSiegeItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, blockTags, AgeofSiege.MODID, existingFileHelper);
 	}
@@ -33,6 +36,11 @@ public class AgeofSiegeItemTagProvider extends ItemTagsProvider {
 				.add(AgeofSiegeBlocks.SALT_BLOCK.asItem());
 		tag(SALT)
 				.add(AgeofSiegeItems.SALT.get());
+		tag(BREAD)
+				.add(AgeofSiegeItems.HARDTACK_BREAD.get())
+				.add(AgeofSiegeItems.BLACK_BREAD.get());
+		tag(RAW_MEAT)
+				.add(AgeofSiegeItems.SALTED_MEAT.get());
 	}
 
 	private static TagKey<Item> commonTag(String name) {
