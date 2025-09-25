@@ -1,5 +1,8 @@
 {
   "item.ageofsiege.hardtack_bread": "Hardtack Bread",
+  "item.ageofsiege.black_bread": "Black Bread",
 
-  "item.minecraft.potion.effect.mead_potion": "Mead"
+  "item.minecraft.potion.effect.mead_potion": "Mead",
+
+  "tooltip.ageofsiege.black_bread.tooltip": "§7Poor-man's wartime bread"
 }
