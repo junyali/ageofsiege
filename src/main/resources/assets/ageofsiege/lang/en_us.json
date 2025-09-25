@@ -1,0 +1,13 @@
+{
+  "itemGroup.ageofsiege": "Example Mod Tab",
+  "block.ageofsiege.example_block": "Example Block",
+  "item.ageofsiege.example_item": "Example Item",
+
+  "ageofsiege.configuration.title": "Age of Siege Configs",
+  "ageofsiege.configuration.section.ageofsiege.common.toml": "Age of Siege Configs",
+  "ageofsiege.configuration.section.ageofsiege.common.toml.title": "Age of Siege Configs",
+  "ageofsiege.configuration.items": "Item List",
+  "ageofsiege.configuration.logDirtBlock": "Log Dirt Block",
+  "ageofsiege.configuration.magicNumberIntroduction": "Magic Number Text",
+  "ageofsiege.configuration.magicNumber": "Magic Number"
+}
