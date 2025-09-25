@@ -36,6 +36,9 @@ public class AgeofSiegeItems {
 				}
 			});
 
+	public static final DeferredItem<Item> SALTED_MEAT = ITEMS.register("salted_meat",
+			() -> new Item(new Item.Properties().food(AgeofSiegeFoodProperties.SALTED_MEAT)));
+
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
 	}

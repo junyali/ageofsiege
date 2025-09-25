@@ -17,5 +17,6 @@ public class AgeofSiegeItemModelProvider extends ItemModelProvider {
 		basicItem(AgeofSiegeItems.HARDTACK_BREAD.get());
 		basicItem(AgeofSiegeItems.BLACK_BREAD.get());
 		basicItem(AgeofSiegeItems.SALT.get());
+		basicItem(AgeofSiegeItems.SALTED_MEAT.get());
 	}
 }

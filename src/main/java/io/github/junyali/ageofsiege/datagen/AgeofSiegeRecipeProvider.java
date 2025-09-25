@@ -43,7 +43,12 @@ public class AgeofSiegeRecipeProvider extends RecipeProvider implements IConditi
 				.unlockedBy("has_wheat", has(Items.WHEAT)).save(recipeOutput);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AgeofSiegeItems.SALT.get(), 9)
-				.requires(AgeofSiegeBlocks.SALT_BLOCK)
+				.requires(AgeofSiegeBlocks.SALT_BLOCK, 1)
 				.unlockedBy("has_salt_block", has(AgeofSiegeBlocks.SALT_BLOCK)).save(recipeOutput);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AgeofSiegeItems.SALTED_MEAT.get(), 1)
+				.requires(AgeofSiegeItems.SALT, 1)
+				.requires(Items.BEEF, 1)
+				.unlockedBy("has_salt", has(AgeofSiegeItems.SALT)).save(recipeOutput);
 	}
 }
