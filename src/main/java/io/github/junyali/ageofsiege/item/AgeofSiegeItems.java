@@ -16,7 +16,13 @@ public class AgeofSiegeItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AgeofSiege.MODID);
 
 	public static final DeferredItem<Item> HARDTACK_BREAD = ITEMS.register("hardtack_bread",
-			() -> new Item(new Item.Properties().food(AgeofSiegeFoodProperties.HARDTACK_BREAD)));
+			() -> new Item(new Item.Properties().food(AgeofSiegeFoodProperties.HARDTACK_BREAD)) {
+				@Override
+				public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+					tooltipComponents.add(Component.translatable("tooltip.ageofsiege.hardtack_bread.tooltip"));
+					super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+				}
+			});
 
 	public static final DeferredItem<Item> BLACK_BREAD = ITEMS.register("black_bread",
 			() -> new Item(new Item.Properties().food(AgeofSiegeFoodProperties.BLACK_BREAD)) {
