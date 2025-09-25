@@ -1,5 +1,6 @@
 package io.github.junyali.ageofsiege;
 
+import io.github.junyali.ageofsiege.block.AgeofSiegeBlocks;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import org.slf4j.Logger;
 
@@ -44,6 +45,7 @@ public class AgeofSiege {
         NeoForge.EVENT_BUS.register(this);
 
 		AgeofSiegeItems.register(modEventBus);
+		AgeofSiegeBlocks.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
