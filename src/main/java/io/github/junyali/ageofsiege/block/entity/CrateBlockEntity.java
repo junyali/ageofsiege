@@ -2,6 +2,7 @@ package io.github.junyali.ageofsiege.block.entity;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
 import io.github.junyali.ageofsiege.block.custom.CrateBlock;
+import io.github.junyali.ageofsiege.screen.custom.CrateMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -41,7 +42,7 @@ public class CrateBlockEntity extends BlockEntity implements Container, MenuProv
 
 	@Override
 	public AbstractContainerMenu createMenu(int containerId, @NotNull Inventory playerInventory, @NotNull Player player) {
-		return null; // return custom menu class for crate
+		return new CrateMenu(containerId, playerInventory, this);
 	}
 
 	@Override
