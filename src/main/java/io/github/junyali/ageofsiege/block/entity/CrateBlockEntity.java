@@ -124,7 +124,7 @@ public class CrateBlockEntity extends BlockEntity implements Container, MenuProv
 				this.level.setBlock(this.getBlockPos(),
 						this.getBlockState().setValue(CrateBlock.OPEN, false), 3);
 				this.level.playSound((Entity) null, this.getBlockPos(), SoundEvents.BARREL_CLOSE,
-						SoundSource.BLOCKS, 0.5f, (float) (this.level.random.nextFloat() * 0.1 + 0.f));
+						SoundSource.BLOCKS, 0.5f, (float) (this.level.random.nextFloat() * 0.1 + 0.9f));
 			}
 		}
 	}
