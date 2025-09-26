@@ -1,13 +1,16 @@
 package io.github.junyali.ageofsiege.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import io.github.junyali.ageofsiege.AgeofSiege;
 import io.github.junyali.ageofsiege.block.entity.CrateBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -70,7 +73,7 @@ public class CrateBlock extends BaseEntityBlock {
 
 		BlockEntity blockEntity = level.getBlockEntity(blockPos);
 		if (blockEntity instanceof CrateBlockEntity crateEntity) {
-			player.openMenu(crateEntity);
+			player.openMenu(new SimpleMenuProvider(crateEntity, Component.translatable("container." + AgeofSiege.MODID + ".crate")), blockPos);
 			return InteractionResult.CONSUME;
 		}
 		return InteractionResult.SUCCESS;

@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class CrateBlockEntity extends BlockEntity implements Container, MenuProvider {
 	public final ItemStackHandler inventory;
@@ -40,6 +41,7 @@ public class CrateBlockEntity extends BlockEntity implements Container, MenuProv
 		return Component.translatable("container." + AgeofSiege.MODID +".crate");
 	}
 
+	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int containerId, @NotNull Inventory playerInventory, @NotNull Player player) {
 		return new CrateMenu(containerId, playerInventory, this);
