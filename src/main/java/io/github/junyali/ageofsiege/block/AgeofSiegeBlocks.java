@@ -1,6 +1,7 @@
 package io.github.junyali.ageofsiege.block;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
+import io.github.junyali.ageofsiege.block.custom.CrateBlock;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -15,6 +16,15 @@ import java.util.function.Supplier;
 
 public class AgeofSiegeBlocks {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AgeofSiege.MODID);
+
+	public static final DeferredBlock<Block> CRATE_BLOCK = registerBlock("crate",
+			() -> new CrateBlock(
+					BlockBehaviour.Properties.of()
+							.noOcclusion()
+							.strength(2.0f)
+							.explosionResistance(3.0f)
+							.sound(SoundType.WOOD)
+			));
 
 	// salt bae approves :p
 	public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
