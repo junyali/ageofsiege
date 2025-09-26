@@ -1,7 +1,7 @@
 package io.github.junyali.ageofsiege.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import io.github.junyali.ageofsiege.block.entity.BaseCrateBlockEntity;
+import io.github.junyali.ageofsiege.block.entity.CrateBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -51,7 +51,7 @@ public class CrateBlock extends BaseEntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-		return new BaseCrateBlockEntity(blockPos, blockState);
+		return new CrateBlockEntity(blockPos, blockState);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class CrateBlock extends BaseEntityBlock {
 		}
 
 		BlockEntity blockEntity = level.getBlockEntity(blockPos);
-		if (blockEntity instanceof BaseCrateBlockEntity crateEntity) {
+		if (blockEntity instanceof CrateBlockEntity crateEntity) {
 			player.openMenu(crateEntity);
 			return InteractionResult.CONSUME;
 		}
@@ -77,7 +77,7 @@ public class CrateBlock extends BaseEntityBlock {
 	protected void onRemove(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull BlockState newBlockState, boolean isMoved) {
 		if (!blockState.is(newBlockState.getBlock())) {
 			BlockEntity blockEntity = level.getBlockEntity(blockPos);
-			if (blockEntity instanceof BaseCrateBlockEntity crateEntity) {
+			if (blockEntity instanceof CrateBlockEntity crateEntity) {
 				level.updateNeighbourForOutputSignal(blockPos, this);
 			}
 		}
@@ -89,7 +89,7 @@ public class CrateBlock extends BaseEntityBlock {
 		List<ItemStack> drops = super.getDrops(blockState, lootParams);
 
 		BlockEntity blockEntity = lootParams.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-		if (blockEntity instanceof BaseCrateBlockEntity crateEntity) {
+		if (blockEntity instanceof CrateBlockEntity crateEntity) {
 			ItemStack crateItem = new ItemStack(this);
 
 			CompoundTag nbt = new CompoundTag();
