@@ -1,6 +1,7 @@
 package io.github.junyali.ageofsiege.block.entity;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
+import io.github.junyali.ageofsiege.block.custom.CrateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -8,8 +9,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -90,6 +94,34 @@ public class CrateBlockEntity extends BlockEntity implements Container, MenuProv
 	@Override
 	public boolean stillValid(@NotNull Player player) {
 		return Container.stillValidBlockEntity(this, player);
+	}
+
+	@Override
+	public void startOpen(@NotNull Player player) {
+		if (!this.remove && !player.isSpectator()) {
+			if (this.openCount++ == 0) {
+				assert this.level != null;
+				this.level.setBlock(this.getBlockPos(),
+						this.getBlockState().setValue(CrateBlock.OPEN, true), 3);
+				this.level.playSound((Entity) null, this.getBlockPos(), SoundEvents.BARREL_OPEN,
+						SoundSource.BLOCKS, 0.5f, (float) (this.level.random.nextFloat() * 0.1 + 0.9f));
+			}
+			assert this.level != null;
+			this.level.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 5);
+		}
+	}
+
+	@Override
+	public void stopOpen(@NotNull Player player) {
+		if (!this.remove && !player.isSpectator()) {
+			if (--this.openCount <= 0) {
+				assert this.level != null;
+				this.level.setBlock(this.getBlockPos(),
+						this.getBlockState().setValue(CrateBlock.OPEN, false), 3);
+				this.level.playSound((Entity) null, this.getBlockPos(), SoundEvents.BARREL_CLOSE,
+						SoundSource.BLOCKS, 0.5f, (float) (this.level.random.nextFloat() * 0.1 + 0.f));
+			}
+		}
 	}
 
 	@Override
