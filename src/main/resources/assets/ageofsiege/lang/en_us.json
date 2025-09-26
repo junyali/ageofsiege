@@ -4,9 +4,12 @@
   "item.ageofsiege.black_bread": "Black Bread",
 
   "block.ageofsiege.salt_block": "Salt Block",
+  "block.ageofsiege.crate": "Crate",
 
   "item.minecraft.potion.effect.mead_potion": "Mead",
 
   "tooltip.ageofsiege.hardtack_bread.tooltip": "§7Cheap, lasting ration",
-  "tooltip.ageofsiege.black_bread.tooltip": "§7Poor-man's wartime bread"
+  "tooltip.ageofsiege.black_bread.tooltip": "§7Poor-man's wartime bread",
+
+  "container.ageofsiege.crate": "Crate"
 }
