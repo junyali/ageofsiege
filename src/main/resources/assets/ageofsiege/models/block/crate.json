@@ -4,7 +4,8 @@
 	"parent": "crate",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "ageofsiege:block/crate"
+		"1": "ageofsiege:block/crate",
+        "particle": "ageofsiege:block/crate"
 	},
 	"elements": [
 		{
