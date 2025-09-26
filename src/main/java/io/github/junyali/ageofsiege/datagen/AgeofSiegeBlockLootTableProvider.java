@@ -28,6 +28,7 @@ public class AgeofSiegeBlockLootTableProvider extends BlockLootSubProvider {
 	@Override
 	protected void generate() {
 		// breaking block drops stuff idk
+		dropSelf(AgeofSiegeBlocks.CRATE_BLOCK.get());
 		add(AgeofSiegeBlocks.SALT_BLOCK.get(),
 				block -> createMultipleOreDrops(AgeofSiegeBlocks.SALT_BLOCK.get(), AgeofSiegeItems.SALT.get(), 1, 4));
 	}
