@@ -4,6 +4,7 @@ import io.github.junyali.ageofsiege.AgeofSiege;
 import io.github.junyali.ageofsiege.block.custom.CrateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -135,6 +137,17 @@ public class CrateBlockEntity extends BlockEntity implements Container, MenuProv
 		super.loadAdditional(tag, registries);
 		if (tag.contains("Inventory")) {
 			inventory.deserializeNBT(registries, tag.getCompound("Inventory"));
+		}
+	}
+
+	public void loadFromItem(ItemStack stack) {
+		CustomData data = stack.get(DataComponents.BLOCK_ENTITY_DATA);
+		if (data != null) {
+			CompoundTag tag = data.copyTag();
+			if (tag.contains("Inventory")) {
+				assert this.level != null;
+				inventory.deserializeNBT(this.level.registryAccess(), tag.getCompound("Inventory"));
+			}
 		}
 	}
 

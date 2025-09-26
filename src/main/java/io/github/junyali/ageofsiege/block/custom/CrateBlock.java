@@ -109,8 +109,7 @@ public class CrateBlock extends BaseEntityBlock {
 	public void setPlacedBy(@NotNull Level level, @NotNull BlockPos blockPos, @NotNull BlockState blockState, LivingEntity placer, @NotNull ItemStack stack) {
 		super.setPlacedBy(level, blockPos, blockState, placer, stack);
 		if (level.getBlockEntity(blockPos) instanceof CrateBlockEntity crateEntity) {
-			// get nbt here
-			return;
+			crateEntity.loadFromItem(stack);
 		}
 	}
 }
