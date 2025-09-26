@@ -3,12 +3,15 @@ package io.github.junyali.ageofsiege.block.custom;
 import com.mojang.serialization.MapCodec;
 import io.github.junyali.ageofsiege.block.entity.CrateBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -93,9 +96,21 @@ public class CrateBlock extends BaseEntityBlock {
 			ItemStack crateItem = new ItemStack(this);
 
 			CompoundTag nbt = new CompoundTag();
-			// store inventory code goes here l8r when i refactor the entity class
+			nbt.put("Inventory", crateEntity.inventory.serializeNBT(lootParams.getLevel().registryAccess()));
+			crateItem.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(nbt));
+			drops.clear();
+			drops.add(crateItem);
 		}
 
 		return drops;
+	}
+
+	@Override
+	public void setPlacedBy(@NotNull Level level, @NotNull BlockPos blockPos, @NotNull BlockState blockState, LivingEntity placer, @NotNull ItemStack stack) {
+		super.setPlacedBy(level, blockPos, blockState, placer, stack);
+		if (level.getBlockEntity(blockPos) instanceof CrateBlockEntity crateEntity) {
+			// get nbt here
+			return;
+		}
 	}
 }
