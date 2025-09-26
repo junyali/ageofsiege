@@ -16,7 +16,7 @@ public class AgeofSiegeBlockStateProvider extends BlockStateProvider {
 	protected void registerStatesAndModels() {
 		// register blockstates hereeee
 		blockWithItem(AgeofSiegeBlocks.SALT_BLOCK);
-		simpleBlock(AgeofSiegeBlocks.CRATE_BLOCK.get(),
+		simpleBlockWithItem(AgeofSiegeBlocks.CRATE_BLOCK.get(),
 				models().getExistingFile(modLoc("block/crate")));
 	}
 

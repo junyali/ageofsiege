@@ -22,5 +22,7 @@ public class AgeofSiegeBlockTagProvider extends BlockTagsProvider {
 		// tags go here!
 		tag(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(AgeofSiegeBlocks.SALT_BLOCK.get());
+		tag(BlockTags.MINEABLE_WITH_AXE)
+				.add(AgeofSiegeBlocks.CRATE_BLOCK.get());
 	}
 }
