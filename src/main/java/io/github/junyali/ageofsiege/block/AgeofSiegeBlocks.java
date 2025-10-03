@@ -1,6 +1,7 @@
 package io.github.junyali.ageofsiege.block;
 
 import io.github.junyali.ageofsiege.AgeofSiege;
+import io.github.junyali.ageofsiege.block.custom.CoinPileBlock;
 import io.github.junyali.ageofsiege.block.custom.CrateBlock;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.world.item.BlockItem;
@@ -25,6 +26,9 @@ public class AgeofSiegeBlocks {
 							.explosionResistance(3.0f)
 							.sound(SoundType.WOOD)
 			));
+
+	public static final DeferredBlock<Block> COIN_PILE_BLOCK = registerBlock("coin_pile",
+			CoinPileBlock::new);
 
 	// salt bae approves :p
 	public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
