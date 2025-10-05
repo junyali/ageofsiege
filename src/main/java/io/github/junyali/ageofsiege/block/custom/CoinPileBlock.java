@@ -7,19 +7,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -115,5 +115,21 @@ public class CoinPileBlock extends Block {
 	@Override
 	protected boolean isCollisionShapeFullBlock(BlockState blockState, @NotNull BlockGetter level, @NotNull BlockPos blockPos) {
 		return blockState.getValue(LAYERS) == 8;
+	}
+
+	@Override
+	protected boolean useShapeForLightOcclusion(@NotNull BlockState blockState) {
+		return true;
+	}
+
+	@Override
+	protected boolean canSurvive(@NotNull BlockState blockState, @NotNull LevelReader level, @NotNull BlockPos blockPos) {
+		BlockState below = level.getBlockState(blockPos.below());
+		return Block.isFaceFull(below.getCollisionShape(level, blockPos.below()), Direction.UP);
+	}
+
+	@Override
+	protected @NotNull BlockState updateShape(@NotNull BlockState blockState, @NotNull Direction direction, @NotNull BlockState neighbourBlockState, @NotNull LevelAccessor level, @NotNull BlockPos blockPos, @NotNull BlockPos neighbourBlockPos) {
+		return !blockState.canSurvive(level, blockPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(blockState, direction, neighbourBlockState, level, blockPos, neighbourBlockPos);
 	}
 }
