@@ -1,8 +1,11 @@
 package io.github.junyali.ageofsiege.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -20,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class CoinPileBlock extends Block {
+	public static final MapCodec<CoinPileBlock> CODEC = simpleCodec(CoinPileBlock::new);
 	public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
 
 	private static final VoxelShape[] SHAPES = new VoxelShape[]{
@@ -43,6 +47,9 @@ public class CoinPileBlock extends Block {
 	}
 
 	@Override
+	protected @NotNull MapCodec<? extends Block> codec() { return CODEC; }
+
+	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(LAYERS);
 	}
@@ -53,7 +60,26 @@ public class CoinPileBlock extends Block {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {
+	public @NotNull List<ItemStack> getDrops(BlockState blockState, LootParams.@NotNull Builder builder) {
 		return List.of(new ItemStack(AgeofSiegeItems.COIN.get(), blockState.getValue(LAYERS)));
+	}
+
+	@Override
+	protected boolean canBeReplaced(BlockState blockState, BlockPlaceContext ctx) {
+		int layers = blockState.getValue(LAYERS);
+		if (ctx.getItemInHand().is(this.asItem()) && layers < 8) {
+			return !ctx.replacingClickedOnBlock() || ctx.getClickedFace() == Direction.UP;
+		}
+		return layers == 1;
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+		BlockState existingState = ctx.getLevel().getBlockState(ctx.getClickedPos());
+		if (existingState.is(this)) {
+			int layers = existingState.getValue(LAYERS);
+			return existingState.setValue(LAYERS, Math.min(8, layers + 1));
+		}
+		return this.defaultBlockState();
 	}
 }
