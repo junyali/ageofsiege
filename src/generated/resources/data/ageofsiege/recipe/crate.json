@@ -3,18 +3,19 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "minecraft:wheat"
+      "tag": "minecraft:logs"
     },
     "@": {
-      "item": "minecraft:sand"
+      "item": "minecraft:barrel"
     }
   },
   "pattern": [
-    " @ ",
+    "###",
+    "#@#",
     "###"
   ],
   "result": {
-    "count": 3,
-    "id": "ageofsiege:hardtack_bread"
+    "count": 1,
+    "id": "ageofsiege:crate"
   }
 }

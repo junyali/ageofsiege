@@ -2,9 +2,11 @@
   "item.ageofsiege.salt": "Salt",
   "item.ageofsiege.hardtack_bread": "Hardtack Bread",
   "item.ageofsiege.black_bread": "Black Bread",
+  "item.ageofsiege.coin": "Coin",
 
   "block.ageofsiege.salt_block": "Salt Block",
   "block.ageofsiege.crate": "Crate",
+  "block.ageofsiege.coin_pile": "Pile of Coins",
 
   "item.minecraft.potion.effect.mead_potion": "Mead",
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:copper_ingot"
+  },
+  "base": {
+    "item": "minecraft:gold_nugget"
+  },
+  "result": {
+    "count": 1,
+    "id": "ageofsiege:coin"
+  },
+  "template": {
+    "item": "minecraft:iron_ingot"
+  }
+}

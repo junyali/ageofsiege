@@ -3,18 +3,14 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "minecraft:wheat"
-    },
-    "@": {
-      "item": "minecraft:sand"
+      "item": "ageofsiege:coin"
     }
   },
   "pattern": [
-    " @ ",
     "###"
   ],
   "result": {
     "count": 3,
-    "id": "ageofsiege:hardtack_bread"
+    "id": "ageofsiege:coin_pile"
   }
 }

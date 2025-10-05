@@ -25,6 +25,10 @@ public class AgeofSiegeItemTagProvider extends ItemTagsProvider {
 	public static final TagKey<Item> BREAD = commonTag("foods/bread");
 	public static final TagKey<Item> RAW_MEAT = commonTag("foods/raw_meat");
 
+	public static final TagKey<Item> STORAGE_CONTAINERS = commonTag("storage/containers");
+	public static final TagKey<Item> CURRENCY = commonTag("items/currency");
+	public static final TagKey<Item> COIN_BLOCKS = commonTag("storage_blocks/coin");
+
 	public AgeofSiegeItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, blockTags, AgeofSiege.MODID, existingFileHelper);
 	}
@@ -41,6 +45,12 @@ public class AgeofSiegeItemTagProvider extends ItemTagsProvider {
 				.add(AgeofSiegeItems.BLACK_BREAD.get());
 		tag(RAW_MEAT)
 				.add(AgeofSiegeItems.SALTED_MEAT.get());
+		tag(STORAGE_CONTAINERS)
+				.add(AgeofSiegeBlocks.CRATE_BLOCK.asItem());
+		tag(CURRENCY)
+				.add(AgeofSiegeItems.COIN.get());
+		tag(COIN_BLOCKS)
+				.add(AgeofSiegeBlocks.COIN_PILE_BLOCK.asItem());
 	}
 
 	private static TagKey<Item> commonTag(String name) {
