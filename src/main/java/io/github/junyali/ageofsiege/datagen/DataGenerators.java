@@ -34,6 +34,7 @@ public class DataGenerators {
 		generator.addProvider(event.includeServer(), new AgeofSiegeItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
 		generator.addProvider(event.includeServer(), new AgeofSiegeDataMapProvider(packOutput, lookupProvider));
 		generator.addProvider(event.includeServer(), new AgeofSiegePOITagsProvider(packOutput, lookupProvider, existingFileHelper));
+		generator.addProvider(event.includeServer(), new AgeofSiegeDatapackProvider(packOutput, lookupProvider));
 
 		// CLIENT
 		generator.addProvider(event.includeClient(), new AgeofSiegeItemModelProvider(packOutput, existingFileHelper));
