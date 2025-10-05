@@ -79,4 +79,14 @@ public class CoinPileBlock extends Block {
 		}
 		return this.defaultBlockState();
 	}
+
+	@Override
+	protected boolean propagatesSkylightDown(@NotNull BlockState blockState, @NotNull BlockGetter level, @NotNull BlockPos blockPos) {
+		return blockState.getValue(LAYERS) < 8;
+	}
+
+	@Override
+	protected boolean isCollisionShapeFullBlock(BlockState blockState, @NotNull BlockGetter level, @NotNull BlockPos blockPos) {
+		return blockState.getValue(LAYERS) == 8;
+	}
 }
