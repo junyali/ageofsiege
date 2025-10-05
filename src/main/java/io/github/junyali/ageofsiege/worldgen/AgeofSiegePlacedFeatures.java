@@ -20,10 +20,10 @@ public class AgeofSiegePlacedFeatures {
 
 		register(context, SALT_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(AgeofSiegeConfiguredFeatures.SALT_BLOCK_KEY),
 				List.of(
-						CountPlacement.of(4),
+						CountPlacement.of(8),
 						InSquarePlacement.spread(),
 						HeightRangePlacement.uniform(
-								VerticalAnchor.absolute(50),
+								VerticalAnchor.absolute(40),
 								VerticalAnchor.absolute(70)
 						),
 						BiomeFilter.biome()
