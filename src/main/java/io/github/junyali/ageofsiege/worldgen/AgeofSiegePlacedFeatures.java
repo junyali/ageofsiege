@@ -6,15 +6,28 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class AgeofSiegePlacedFeatures {
+	public static final ResourceKey<PlacedFeature> SALT_BLOCK_PLACED_KEY = registerKey("salt_block_placed");
+
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+
+		register(context, SALT_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(AgeofSiegeConfiguredFeatures.SALT_BLOCK_KEY),
+				List.of(
+						CountPlacement.of(4),
+						InSquarePlacement.spread(),
+						HeightRangePlacement.uniform(
+								VerticalAnchor.absolute(50),
+								VerticalAnchor.absolute(70)
+						),
+						BiomeFilter.biome()
+				));
 	}
 
 	private static ResourceKey<PlacedFeature> registerKey(String name) {
