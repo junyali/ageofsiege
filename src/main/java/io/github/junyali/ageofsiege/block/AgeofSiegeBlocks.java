@@ -34,6 +34,7 @@ public class AgeofSiegeBlocks {
 							.mapColor(MapColor.GOLD)
 							.strength(0.2F)
 							.noOcclusion()
+							.sound(SoundType.CHAIN)
 			));
 
 	// salt bae approves :p
