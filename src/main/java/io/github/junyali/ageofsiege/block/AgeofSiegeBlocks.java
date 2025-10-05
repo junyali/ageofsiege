@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -28,7 +29,12 @@ public class AgeofSiegeBlocks {
 			));
 
 	public static final DeferredBlock<Block> COIN_PILE_BLOCK = registerBlock("coin_pile",
-			CoinPileBlock::new);
+			() -> new CoinPileBlock(
+					BlockBehaviour.Properties.of()
+							.mapColor(MapColor.GOLD)
+							.strength(0.2F)
+							.noOcclusion()
+			));
 
 	// salt bae approves :p
 	public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",

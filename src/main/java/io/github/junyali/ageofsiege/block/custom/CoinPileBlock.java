@@ -37,12 +37,9 @@ public class CoinPileBlock extends Block {
 			Shapes.box(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D),
 	};
 
-	public CoinPileBlock() {
+	public CoinPileBlock(Properties properties) {
 		// basically a snow layer block but on steroids
-		super(BlockBehaviour.Properties.of()
-				.mapColor(MapColor.GOLD)
-				.strength(0.2F)
-				.noOcclusion());
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(LAYERS, 1));
 	}
 
