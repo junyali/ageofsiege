@@ -2,6 +2,7 @@ package io.github.junyali.ageofsiege;
 
 import io.github.junyali.ageofsiege.block.AgeofSiegeBlocks;
 import io.github.junyali.ageofsiege.block.entity.AgeofSiegeBlockEntities;
+import io.github.junyali.ageofsiege.item.AgeofSiegeCreativeModTabs;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import io.github.junyali.ageofsiege.potion.AgeofSiegePotions;
 import io.github.junyali.ageofsiege.screen.AgeofSiegeMenuTypes;
@@ -35,6 +36,7 @@ public class AgeofSiege {
 		AgeofSiegeBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 		AgeofSiegeMenuTypes.register(modEventBus);
 	    AgeofSiegeVillagers.register(modEventBus);
+	    AgeofSiegeCreativeModTabs.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

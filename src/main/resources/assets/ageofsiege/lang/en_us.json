@@ -15,5 +15,7 @@
 
   "container.ageofsiege.crate": "Crate",
 
-  "entity.minecraft.villager.ageofsiege.merchant": "Merchant"
+  "entity.minecraft.villager.ageofsiege.merchant": "Merchant",
+
+  "creativetab.ageofsiege.tab": "Age of Siege"
 }
