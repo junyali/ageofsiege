@@ -15,7 +15,7 @@ public class AgeofSiegeCreativeModTabs {
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AgeofSiege.MODID);
 
 	public static final Supplier<CreativeModeTab> AGEOFSIEGE_TAB = CREATIVE_MODE_TAB.register(AgeofSiege.MODID + "_tab",
-			() -> CreativeModeTab.builder().icon(() -> new ItemStack(AgeofSiegeBlocks.CRATE_BLOCK.asItem()))
+			() -> CreativeModeTab.builder().icon(() -> new ItemStack(AgeofSiegeBlocks.CRATE_BLOCK))
 					.title(Component.translatable("creativetab." + AgeofSiege.MODID + ".tab"))
 					.displayItems((itemDisplayParameters, output) -> {
 						// stuff goes here!
