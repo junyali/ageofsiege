@@ -4,9 +4,13 @@ import com.mojang.serialization.MapCodec;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -62,8 +66,12 @@ public class CoinPileBlock extends Block {
 	@Override
 	public @NotNull List<ItemStack> getDrops(@NotNull BlockState blockState, LootParams.@NotNull Builder builder) {
 		ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+		HolderLookup.Provider registries = builder.getLevel().registryAccess();
 
-		if (tool != null && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+		Holder<Enchantment> silkTouch = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH);
+		Holder<Enchantment> fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+
+		if (tool != null && tool.getEnchantmentLevel(silkTouch) > 0) {
 			return List.of(new ItemStack(this));
 		}
 
@@ -71,9 +79,9 @@ public class CoinPileBlock extends Block {
 		int dropCount = layers;
 
 		if (tool != null) {
-			int fortuneLevel = tool.getEnchantmentLevel(Enchantments.FORTUNE);
+			int fortuneLevel = tool.getEnchantmentLevel(fortune);
 			if (fortuneLevel > 0) {
-				dropCount += RandomSource.create().nextInt(fortuneLevel + 1);
+				dropCount += builder.getLevel().getRandom().nextInt(fortuneLevel + 1);
 			}
 		}
 
