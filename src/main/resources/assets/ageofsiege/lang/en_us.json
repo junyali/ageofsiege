@@ -13,5 +13,7 @@
   "tooltip.ageofsiege.hardtack_bread.tooltip": "§7Cheap, lasting ration",
   "tooltip.ageofsiege.black_bread.tooltip": "§7Poor-man's wartime bread",
 
-  "container.ageofsiege.crate": "Crate"
+  "container.ageofsiege.crate": "Crate",
+
+  "entity.minecraft.villager.ageofsiege.merchant": "Merchant"
 }
