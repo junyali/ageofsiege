@@ -33,11 +33,7 @@ public class AgeofSiegeBlockLootTableProvider extends BlockLootSubProvider {
 		dropSelf(AgeofSiegeBlocks.CRATE_BLOCK.get());
 		add(AgeofSiegeBlocks.SALT_BLOCK.get(),
 				block -> createMultipleOreDrops(AgeofSiegeBlocks.SALT_BLOCK.get(), AgeofSiegeItems.SALT.get(), 1, 4));
-		add(AgeofSiegeBlocks.COIN_PILE_BLOCK.get(),
-				block -> LootTable.lootTable()
-						.withPool(LootPool.lootPool()
-								.setRolls(ConstantValue.exactly(1))
-								.add(LootItem.lootTableItem(AgeofSiegeItems.COIN.get()))));
+		dropOther(AgeofSiegeBlocks.COIN_PILE_BLOCK.get(), AgeofSiegeItems.COIN.get());
 	}
 
 	protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

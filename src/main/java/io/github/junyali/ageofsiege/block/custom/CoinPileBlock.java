@@ -4,8 +4,10 @@ import com.mojang.serialization.MapCodec;
 import io.github.junyali.ageofsiege.item.AgeofSiegeItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -57,8 +60,24 @@ public class CoinPileBlock extends Block {
 	}
 
 	@Override
-	public @NotNull List<ItemStack> getDrops(BlockState blockState, LootParams.@NotNull Builder builder) {
-		return List.of(new ItemStack(AgeofSiegeItems.COIN.get(), blockState.getValue(LAYERS)));
+	public @NotNull List<ItemStack> getDrops(@NotNull BlockState blockState, LootParams.@NotNull Builder builder) {
+		ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+
+		if (tool != null && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+			return List.of(new ItemStack(this));
+		}
+
+		int layers = blockState.getValue(LAYERS);
+		int dropCount = layers;
+
+		if (tool != null) {
+			int fortuneLevel = tool.getEnchantmentLevel(Enchantments.FORTUNE);
+			if (fortuneLevel > 0) {
+				dropCount += RandomSource.create().nextInt(fortuneLevel + 1);
+			}
+		}
+
+		return List.of(new ItemStack(AgeofSiegeItems.COIN.get(), dropCount));
 	}
 
 	@Override
