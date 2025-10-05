@@ -19,6 +19,15 @@ public class AgeofSiegeCreativeModTabs {
 					.title(Component.translatable("creativetab." + AgeofSiege.MODID + ".tab"))
 					.displayItems((itemDisplayParameters, output) -> {
 						// stuff goes here!
+						output.accept(AgeofSiegeItems.HARDTACK_BREAD);
+						output.accept(AgeofSiegeItems.BLACK_BREAD);
+						output.accept(AgeofSiegeItems.SALTED_MEAT);
+						output.accept(AgeofSiegeItems.SALT);
+						output.accept(AgeofSiegeItems.COIN);
+
+						output.accept(AgeofSiegeBlocks.SALT_BLOCK);
+						output.accept(AgeofSiegeBlocks.CRATE_BLOCK);
+						output.accept(AgeofSiegeBlocks.COIN_PILE_BLOCK);
 					}).build());
 
 	public static void register(IEventBus eventBus) {
