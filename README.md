@@ -12,7 +12,7 @@
 
 <h2 align="center">Gallery</h2>
 <p>
-    <a href="https://youtu.be/HqDCgkXepSI">Short demonstration video here!</a>
+    <a href="https://youtu.be/71vQEgqS3bM">Short demonstration video here!</a>
     <img alt="crates" src="./preview/crates.png">
     <img alt="trade" src="./preview/trade.png">
     <img alt="food" src="./preview/food.png">
