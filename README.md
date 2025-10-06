@@ -10,11 +10,14 @@
 <p><b>⚠️ Active development - some stuff might be waffle :P</b></p>
 <p>Age of Siege is a small content mod adding a variety of medieval rations and fortifications to improve your middle age survival experience!</p>
 
-<h2 align="center">Gallery <br><br>
+<h2 align="center">Gallery</h2>
+<p>
+    <a href="https://youtu.be/HqDCgkXepSI">Short demonstration video here!</a>
     <img alt="crates" src="./preview/crates.png">
+    <img alt="trade" src="./preview/trade.png">
     <img alt="food" src="./preview/food.png">
     <img alt="salt" src="./preview/salt.png">
-</h2>
+</p>
 
 <h2 align="center">Development</h2>
 <p>
@@ -23,6 +26,8 @@
         <li>Crate storage block</li>
         <li>Salt (yay?)</li>
         <li>Food items</li>
+        <li>Coins!</li>
+        <li>Merchant villager profession</li>
     </ul>
     <b>To be added:</b>
     <ul>
